@@ -54,8 +54,8 @@ xxxx
 
 | Código              |  Nome               |          Descrição  |  Prioridade         |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| F001 | xxxx | xxxx| Máxima |
-| F002 | Exibir Modalidades. | Um aluno pode acessar a funcionalidade que permite exibir as informações relacionadas de uma ou várias modalidades. | [Alta/Média/Baixa] |
+| F001 | xxxx | xxxx| [Alta/Média/Baixa] |
+| F002 | xx | xxx| [Alta/Média/Baixa] |
 
 
 ## 9. Requisitos não-funcionais
