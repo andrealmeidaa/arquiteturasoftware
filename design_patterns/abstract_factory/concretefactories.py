@@ -19,4 +19,4 @@ class CreditCardPaymentFactory(PaymentFactory):
     def create_payment_serializer(self):
         return CreditCardPaymentSerializer()
 
-#Implementando outro produto
+#Implementando outro produto @todo
