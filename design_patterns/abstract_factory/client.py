@@ -5,13 +5,14 @@ from rest_framework import status
 # Dictionary to map payment type to the corresponding factory
 PAYMENT_FACTORIES = {
     'credit_card': CreditCardPaymentFactory(),
+    'pix': PixPaymentFactory(),
     # 'paypal': PayPalPaymentFactory(),
     # 'crypto': CryptocurrencyPaymentFactory(),
     # Add other factories as needed
 }
 
 class PaymentView(views.APIView):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         payment_type = request.data.get('payment_type')
         factory = PAYMENT_FACTORIES.get(payment_type)
 
