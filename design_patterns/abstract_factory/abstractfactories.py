@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-
-# Abstract factory interface
+# Criaçao de classes abstratas em Python - https://docs.python.org/3/library/abc.html
+# Interfaces da fabrica abstrata
 class PaymentFactory(ABC):
     @abstractmethod
     def create_payment_processor(self):
@@ -10,7 +10,7 @@ class PaymentFactory(ABC):
     def create_payment_serializer(self):
         pass
 
-# Abstract product interfaces
+# Interface dos produtos abstratos
 class PaymentProcessor(ABC):
     @abstractmethod
     def process_payment(self, payment_data):

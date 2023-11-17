@@ -19,4 +19,24 @@ class CreditCardPaymentFactory(PaymentFactory):
     def create_payment_serializer(self):
         return CreditCardPaymentSerializer()
 
-#Implementando outro produto @todo
+#Implementando outro produto
+
+# Produtos
+
+class PixPaymentProcessor(PaymentProcessor):
+    def process_payment(self, payment_data):
+        # Implement payment processing logic here
+        print("Processing pix payment...")
+
+class PixPaymentSerializer(PaymentSerializer):
+    def validate_payment(self, payment_data):
+        # Implement payment data validation logic here
+        print("Validating pix payment data...")
+
+# Fabrica
+class PixPaymentFactory(PaymentFactory):
+    def create_payment_processor(self):
+        return PixPaymentProcessor()
+
+    def create_payment_serializer(self):
+        return PixPaymentSerializer()
