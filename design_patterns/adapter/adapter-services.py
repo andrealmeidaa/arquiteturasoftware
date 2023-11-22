@@ -9,20 +9,20 @@ class NewPaymentService:
         print(f"Executing payment of {payment_details['amount']} with {payment_details['method']}.")
 
 class PaymentServiceAdapter(PaymentProcessor):
-    def __init__(self, new_payment_service):
-        self.new_payment_service = new_payment_service
+    def __init__(self):
+        self.newPaymentService = NewPaymentService()
 
     def process_payment(self, amount):
         payment_details = {
             'amount': amount,
             'method': 'New Method'
         }
-        self.new_payment_service.execute_payment(payment_details)
+        self.newPaymentService.execute_payment(payment_details)
 
 class PaymentView(views.APIView):
     def post(self, request, *args, **kwargs):
         amount = request.data.get("amount")
-      #  payment_processor = PaymentServiceAdapter(NewPaymentService())
-        payment_processor=PaymentProcessor()
+        payment_processor = PaymentServiceAdapter()
+        #payment_processor=PaymentProcessor()
         payment_processor.process_payment(amount)
         return Response({"status": "Payment processed successfully"})
