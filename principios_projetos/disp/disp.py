@@ -32,7 +32,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 class UserEmailAPIView(APIView):
-    def __init__(self, user_dao, email_service):
+    def __init__(self, user_dao: IUserDAO, email_service: IEmailService): #As instâncias concretas são passadas no construtor e não mais fixadas dentro da view
         self.user_dao = user_dao
         self.email_service = email_service
 

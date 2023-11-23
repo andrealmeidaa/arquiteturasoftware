@@ -8,7 +8,7 @@ class Database:
 class Database2:
     def __init__(self) -> None:
         self.data="Novo Banco de Dados"
-    def getData(self):
+    def getData(self) -> str:
         return self.data
 
 class IDataRetriever:
@@ -19,7 +19,7 @@ class User:
     def __init__(self, dataRetriever: IDataRetriever):
         self.dataRetriever = dataRetriever
 
-    def getUserData(self):
+    def getUserData(self) -> str:
         return self.dataRetriever.getData()
 
 class Application:
@@ -27,7 +27,7 @@ class Application:
         self.db = Database2()
         self.user = User(self.db)
 
-    def displayUserData(self):
+    def displayUserData(self) -> None:
         print(self.user.getUserData())
 
 # Usage

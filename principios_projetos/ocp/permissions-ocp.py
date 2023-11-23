@@ -1,4 +1,4 @@
-class PermissionFactory:
+class PermissionFactory: # Fábrica
     permission_classes = {
         'admin': AdminPermission,
         'regular': RegularUserPermission,
