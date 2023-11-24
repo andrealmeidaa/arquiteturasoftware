@@ -2,6 +2,7 @@ class PermissionFactory: # Fábrica
     permission_classes = {
         'admin': AdminPermission,
         'regular': RegularUserPermission,
+        'special':SpecialUsarPermission,
         # Other permissions can be added here without modifying existing ones
     }
 

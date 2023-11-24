@@ -2,10 +2,10 @@ from django.core.mail import send_mail
 
 class EmailService:
     @staticmethod
-    def send_welcome_email(email):
+    def send_welcome_email(email,subject,message):
         send_mail(
-            'Welcome!',
-            'Thank you for signing up.',
+            subject,
+            message,
             'from@example.com',
             [email],
             fail_silently=False,

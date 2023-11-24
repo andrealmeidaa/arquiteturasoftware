@@ -12,4 +12,6 @@ class UserAPIView(APIView):
             return [AdminPermission()]
         elif self.request.user.type == 'regular':
             return [RegularUserPermission()]
+        elif self.request.user.type=='special':
+            return [SpecialUserPermission()]
         # Imagine more elif statements for each new user type.

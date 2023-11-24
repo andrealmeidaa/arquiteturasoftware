@@ -11,7 +11,8 @@ class UserAPIView(APIView):
         )
 
         # Send a welcome email
-        EmailService.send_welcome_email(user.email)
+        EmailService.send_welcome_email(user.email,
+        "Welcome","Novo usuário criado!")
 
         # Log the user creation
         LoggerService.log_new_user(user)
