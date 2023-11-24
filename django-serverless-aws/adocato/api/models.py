@@ -76,11 +76,6 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome
  
-    def save(self, *args, **kwargs):
-        if self.pk is None:  # se é uma nova instância
-            user = User.objects.create_user(username=self.nome, email=self.email)
-            self.user = user
-        super().save(*args, **kwargs)
 
 class Adocao(models.Model):
     status_opts=[

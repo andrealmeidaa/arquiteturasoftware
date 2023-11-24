@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "aws_region": "us-east-1",
+        "django_settings": "adocato.settings",
+        "profile_name": "default",
+        "project_name": "adocato",
+        "runtime": "python3.10",
+        "s3_bucket": "zappa-adocato-dev",
+        "manage_roles":false,
+        "role_name": "LabRole",
+        "role_arn": "arn:aws:iam::208945471036:role/LabRole",
+        "exclude":["*.sqlite3"],
+        "include":["/mnt/efs/db.sqlite3"]
+    }
+}
