@@ -8,8 +8,6 @@
         "s3_bucket": "zappa-adocato-dev",
         "manage_roles":false,
         "role_name": "LabRole",
-        "role_arn": "arn:aws:iam::208945471036:role/LabRole",
-        "exclude":["*.sqlite3"],
-        "include":["/mnt/efs/db.sqlite3"]
+        "role_arn": "arn:aws:iam::208945471036:role/LabRole"
     }
 }
