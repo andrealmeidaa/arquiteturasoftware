@@ -1,6 +1,7 @@
 # interfaces.py
 from abc import ABC, abstractmethod
 
+#São criadas interfaces para o serviço, que facilita a substituição
 class IUserDAO(ABC):
     @abstractmethod
     def get_user(self, user_id):
@@ -13,7 +14,7 @@ class IEmailService(ABC):
 
 # dao.py
 from .interfaces import IUserDAO
-
+#Implementações concretas. Novos DAOs e E-mails poderiam ser adicionados sem modificar o comportamente da view
 class UserDAO(IUserDAO):
     def get_user(self, user_id):
         # Logic to retrieve the user from the database
@@ -41,3 +42,5 @@ class UserEmailAPIView(APIView):
         self.email_service.send_email(user.email, "Your account has been created.")
         
         return Response({"message": "Email sent to user."})
+
+# Exemplo em alto níve: api-view=UserEmailAPIView(UserDAO(),EmailService())

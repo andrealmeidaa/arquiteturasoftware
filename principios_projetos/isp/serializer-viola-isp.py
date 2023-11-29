@@ -4,6 +4,11 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 
+'''
+Nesse formato, o JSON servido como respota sempre irá retornar o password, 
+o que pode ser um risco de segurança ou simplesmentes desnessário na maior parte do tempo
+'''
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

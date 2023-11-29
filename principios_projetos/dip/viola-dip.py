@@ -18,10 +18,10 @@ from .email_service import EmailService
 
 class UserEmailAPIView(APIView):
     def post(self, request, user_id):
-        user_dao = UserDAO()
+        user_dao = UserDAO() #A View depende diretamente de uma classe concreta, instanciada dentro do código
         user = user_dao.get_user(user_id)
         
-        email_service = EmailService()
+        email_service = EmailService() #A mesma situação anterior, aumentando a dependência de classe de serviços
         email_service.send_email(user.email, "Your account has been created.")
         
         return Response({"message": "Email sent to user."})

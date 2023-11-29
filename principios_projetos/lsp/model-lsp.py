@@ -7,5 +7,5 @@ class User(models.Model):
 
 class VerifiedUser(User):
     def is_active(self):
-        # The is_active method in VerifiedUser now respects the behavior of User's is_active
+        # O método is_active da classe VerifiedUser agora respeita o comportamento definido no método is_active da classe User
         return super().is_active() and self.is_verified
