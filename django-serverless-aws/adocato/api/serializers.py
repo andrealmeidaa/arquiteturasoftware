@@ -10,7 +10,7 @@ class RacaSerializer(serializers.ModelSerializer):
 class GatoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gato
-        fields = ['nome', 'raca', 'idade', 'peso', 'data_cadastro', 'foto']
+        fields = ['nome', 'raca','descricao','data_nascimento', 'data_cadastro']
 
 
 class UsuarioSerializer(serializers.ModelSerializer):

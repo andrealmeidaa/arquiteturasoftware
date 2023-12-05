@@ -33,7 +33,7 @@ SECRET_KEY = "django-insecure-dac0av-(jr3vshavt+mli-k%6*l5_k$#w+6250el+9^p7)lc#*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',config["endpoint"]["API_ENDPOINT_HOST"]]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+   'drf_yasg',
     "api",
 ]
 
@@ -131,17 +132,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# STATIC_URL = "static/"
+STATIC_URL = "static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-S3_BUCKET_NAME = "django-static-adocato"
-STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
-AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET_NAME
+#S3_BUCKET_NAME = "django-static-adocato"
+#STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+#AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET_NAME
 
 # to serve the static files from your s3 bucket
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
+#STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 
 
 # Default primary key field type
