@@ -166,6 +166,63 @@ Para realizar as configurações iniciais, acesse o terminal na raiz do projeto,
 ### Realizando Implantação
 
 Depois de feita a configuração, devemos aplicar os comandos necessários para execução da aplicação. Para realizar a implantação, execute o comando ```zappa deploy dev```. Esse comando só precisa ser feito uma única vez. Caso o código seja atualizado, execute o comando ```zappa update dev``` para atualizar a implantação. 
-Caso o processo ocorra sem problemas, será informando o endpoint do API GAteway por onde as requisições podem ser feitas. Para testar, use o curl ou postman para emitir as requisições.
+Caso o processo ocorra sem problemas, será informando o endpoint do API GAteway por onde as requisições podem ser feitas. 
+
+### Configurando acesso das funções Lambda ao RDS
+
+Como vocês devem ter percebido, operação em plataformas de nuvem é altamente direcionada a configurações de segurança, onde o acesso os controles de acesso aos recursos precisam ser bem definidos. Anteriormente, fizemos a liberação para permitir que o ambiente do Cloud9 tivesse acesso ao banco de dados. Agora, precisaremos configurar a função lambda para acessar o banco. Para isso, precisamos vincular a função lambda a mesma VPC e grupo de seguranção do banco de dados. VPC é a rede na nuvem criada para permitir a conectividade entre os elementos em nuvem associados a sua conta.
+
+Para fazer a configuração de acesso, execute os seguintes passos:
+
+1. No console AWS, localize o serviço AWS Lambda.
+2. Localize a função <seu-projeto>-dev e clique no nome
+3. Acesse a aba **Configuração** e selecione VPC e clique em adicionar VPC
+4. Na tela que se apresenta, escolha a VPC(só existe uma), selecione todas as sub-redes e selecione o grupo de segurança disponibilizado, que é o mesmo do RDS.
+5. Clique em salvar e aguarde a atualização da função lambda
+
+Após realizar a configuração, para testar, use o curl ou postman para emitir as requisições.
+
+## Usando conteúdo estático (opcional)
+
+Caso você deseje acessar diretamente a página da API no navegador ou mesmo servir a documentação da API usando Swagger, será necessário configurar o bucket para retenção dos arquivos estáticos. Esse procedimento permite que arquivos como CSS, HTML, JS sejam servidos, já que em computação serverless, as funções lambda não tem acesso direto a disco. Para isso é necessário o uso de um repositório de arquivos, no caso o S3.
+
+### Criando bucket de conteúdo estático
+
+Para criação do bucket, é necessário usar o console da AWS. Para realizar a criação, execute os seguinte passos:
+
+1. Acesse o console AWS e localize o serviço S3
+2. Selecione a opção **Criar Bucket**
+3. Coloque o nome do bucket como <projeto>-django-static
+4. Em propriedades do objeto, habilite listas de controle de acesso (ACLs).
+5. Desmarque a opção **Bloquear todo o acesso público**. Marque a opção que você reconhece que está publicizando o conteúdo.
+6. Clique no botão **Criar Bucket**
+7. Após criar o bucket, clique no nome dele na lista, clique em **Permissões** e localize a seção **CORS** e cole o seguinte conteúdo
+    ```json
+        [
+            {
+                "AllowedHeaders": ["*"],
+                "AllowedMethods": ["GET"],
+                "AllowedOrigins": ["*"],
+                "MaxAgeSeconds": 3000
+            }
+        ]
+    ```
+8. Essa definição permite com que diferentes origens, através de requisições do tipo GET, possam ter acesso ao conteúdo do bucket.
+9. Agora precisamos modificar o arquivo settings.py da aplicação para que ele passe a usar o bucket como local de conteúdo estático. Altere o arquivos settings.py, na seção de configuração de arquivos estáticos, adicionando o seguinte código
+```python
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    S3_BUCKET_NAME = "<nome_do_bucket>"
+    STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+    AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET_NAME
+
+    # to serve the static files from your s3 bucket
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
+    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+```
+10. Com o cógigo salvo, execute o comando ```zappa update dev``` e após atualização execute o comando ```python manage.py collectstatic``` que irá jogar o conteúdo estático da sua aplicação no bucket.
+11. Experimento agora acessar o endpoint diretamente pelo navegador.
+
+
 
 
