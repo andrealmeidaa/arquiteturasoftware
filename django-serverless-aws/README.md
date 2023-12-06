@@ -193,9 +193,10 @@ Para criação do bucket, é necessário usar o console da AWS. Para realizar a 
 1. Acesse o console AWS e localize o serviço S3
 2. Selecione a opção **Criar Bucket**
 3. Coloque o nome do bucket como <projeto>-django-static
-4. Desmarque a opção **Bloquear todo o acesso público**. Marque a opção que você reconhece que está publicizando o conteúdo.
-5. Clique no botão **Criar Bucket**
-6. Após criar o bucket, clique no nome dele na lista, clique em **Permissões** e localize a seção **CORS** e cole o seguinte conteúdo
+4. Em propriedades do objeto, habilite listas de controle de acesso (ACLs).
+5. Desmarque a opção **Bloquear todo o acesso público**. Marque a opção que você reconhece que está publicizando o conteúdo.
+6. Clique no botão **Criar Bucket**
+7. Após criar o bucket, clique no nome dele na lista, clique em **Permissões** e localize a seção **CORS** e cole o seguinte conteúdo
     ```json
         [
             {
@@ -206,8 +207,8 @@ Para criação do bucket, é necessário usar o console da AWS. Para realizar a 
             }
         ]
     ```
-7. Essa definição permite com que diferentes origens, através de requisições do tipo GET, possam ter acesso ao conteúdo do bucket.
-8. Agora precisamos modificar o arquivo settings.py da aplicação para que ele passe a usar o bucket como local de conteúdo estático. Altere o arquivos settings.py, na seção de configuração de arquivos estáticos, adicionando o seguinte código
+8. Essa definição permite com que diferentes origens, através de requisições do tipo GET, possam ter acesso ao conteúdo do bucket.
+9. Agora precisamos modificar o arquivo settings.py da aplicação para que ele passe a usar o bucket como local de conteúdo estático. Altere o arquivos settings.py, na seção de configuração de arquivos estáticos, adicionando o seguinte código
 ```python
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -219,8 +220,8 @@ Para criação do bucket, é necessário usar o console da AWS. Para realizar a 
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
     STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 ```
-9. Com o cógigo salvo, execute o comando ```zappa update dev``` e após atualização execute o comando ```python manage.py collectstatic``` que irá jogar o conteúdo estático da sua aplicação no bucket.
-10. Experimento agora acessar o endpoint diretamente pelo navegador.
+10. Com o cógigo salvo, execute o comando ```zappa update dev``` e após atualização execute o comando ```python manage.py collectstatic``` que irá jogar o conteúdo estático da sua aplicação no bucket.
+11. Experimento agora acessar o endpoint diretamente pelo navegador.
 
 
 
