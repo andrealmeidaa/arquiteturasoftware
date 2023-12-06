@@ -1,11 +1,10 @@
 {
     "dev": {
-        "aws_region": "us-east-1",
         "django_settings": "adocato.settings",
-        "profile_name": "default",
+        "profile_name": null,
         "project_name": "adocato",
-        "runtime": "python3.10",
-        "s3_bucket": "zappa-adocato-dev",
+        "runtime": "python3.11",
+        "s3_bucket": "zappa-5nblcsg3y",
         "manage_roles":false,
         "role_name": "LabRole",
         "role_arn": "arn:aws:iam::735541834784:role/LabRole"
