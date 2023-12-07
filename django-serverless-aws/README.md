@@ -9,12 +9,11 @@ Pré-requisitos:
 * Conhecimentos básicos de banco de dados (MySQL)
 
 ## Estrutura do Tutorial
-1. Preparação do Ambiente de Desenvolvimento
-2. Criação do Banco de Dados - RDS
-3. Instalação de Dependências e Configuração
-4. Codificação da API(Básico)
-5. Implantação
-6. Utilização
+1. [Preparação do Ambiente de Desenvolvimento](#preparação-do-ambiente-de-desenvolvimento)
+2. [Criação do Banco de Dados - RDS](#banco-de-dados-na-nuvem---rds)
+3. [Configurando a Aplicação para Acessar o Banco de Dados](#configurando-aplicação-para-acessar-o-banco-de-dados)
+4. [Implantando a Aplicação com Zappa - Serverless](#implantando-a-aplicação-serverless-com-zappa)
+6. [Configuração de Conteúdo Estático (Opcional)](#usando-conteúdo-estático-opcional)
 
 ## Preparação do Ambiente de Desenvolvimento
 
@@ -48,6 +47,10 @@ Vamos iniciar a criação do nosso ambiente. Para isso, na parte superior do con
 Aguarde a criação do ambiente. Se quiser saber mais o que você pode fazer com o AWS Cloud9, clique [aqui](https://docs.aws.amazon.com/pt_br/cloud9/latest/user-guide/ide.html).
 
 Após a criação do ambiente, lembre-se de criar o virtual env do Python, clonar o repositório e configurar as informações do git para permitir a realização dos commits.
+
+#### Repositórios Privados - Github
+
+Considerando que os respositórios dos projetos de PDS são privados, para acessar o código é necessário usar a clonagem via SSH, usando sua chave pública ou então com o uso de personal tokens do Github. Para realizar esse procedimento, siga os passos descritos [aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
 
 ## Banco de Dados na Nuvem - RDS
 
