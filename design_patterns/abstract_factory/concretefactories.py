@@ -1,17 +1,17 @@
 
 from abstractfactories import PaymentFactory, PaymentProcessor, PaymentSerializer
-# Concrete product for credit card payments
+# Produto concreto para processar cartão de crédito
 class CreditCardPaymentProcessor(PaymentProcessor):
     def process_payment(self, payment_data):
-        # Implement payment processing logic here
+        # Implementar a lógica de processamento de pagamento aqui
         print("Processing credit card payment...")
 
 class CreditCardPaymentSerializer(PaymentSerializer):
     def validate_payment(self, payment_data):
-        # Implement payment data validation logic here
+        # Implementar a lógica de validação de pagamento aqui
         print("Validating credit card payment data...")
 
-# Concrete factory for credit card payments
+# Fábrica concreta para o cartão de crédito
 class CreditCardPaymentFactory(PaymentFactory):
     def create_payment_processor(self):
         return CreditCardPaymentProcessor()
