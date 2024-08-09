@@ -1,6 +1,7 @@
 from rest_framework import views
 from rest_framework.response import Response
 from rest_framework import status
+from concretefactories import CreditCardPaymentFactory, PixPaymentFactory, BoletoPaymentFactory
 
 # Dictionary to map payment type to the corresponding factory
 PAYMENT_FACTORIES = {
