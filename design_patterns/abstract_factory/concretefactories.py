@@ -40,3 +40,21 @@ class PixPaymentFactory(PaymentFactory):
 
     def create_payment_serializer(self):
         return PixPaymentSerializer()
+
+#Boleto
+
+class BoletoPaymentProcessor(PaymentProcessor):
+    def process_payment(self, payment_data):
+        # Implement payment processing logic here
+        print("Processing boleto payment...")
+class BoletoPaymentSerializer(PaymentSerializer):
+    def validate_payment(self, payment_data):
+        # Implement payment data validation logic here
+        print("Validating boleto payment data...")
+
+class BoletoPaymentFactory(PaymentFactory):
+    def create_payment_processor(self):
+        return BoletoPaymentProcessor()
+
+    def create_payment_serializer(self):
+        return BoletoPaymentSerializer()

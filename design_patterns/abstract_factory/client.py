@@ -6,6 +6,7 @@ from rest_framework import status
 PAYMENT_FACTORIES = {
     'credit_card': CreditCardPaymentFactory(),
     'pix': PixPaymentFactory(),
+    'boleto':BoletoPaymentFactory(),
     # 'paypal': PayPalPaymentFactory(),
     # 'crypto': CryptocurrencyPaymentFactory(),
     # Add other factories as needed

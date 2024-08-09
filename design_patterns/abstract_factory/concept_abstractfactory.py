@@ -10,15 +10,16 @@ class ConcreteProductA1(ProductA):
 class ConcreteProductA2(ProductA):
     def operation(self):
        return "ProductA2"
+    
 class ProductB(ABC):
     @abstractmethod
-    def operation(self):
+    def operation2(self):
         pass
 class ConcreteProductB1(ProductB):
-    def operation(self):
+    def operation2(self):
         return "ProductB1"
 class ConcreteProductB2(ProductB):
-    def operation(self):
+    def operation2(self):
         return "ProductB2"
 
 class AbstractFactory(ABC):
@@ -59,5 +60,5 @@ print(product_b.operation())
 factoryB=ConcreteFactoryB()
 product_a = factoryB.create_product_a()
 product_b = factoryB.create_product_b()
-print(product_a.operation())
-print(product_b.operation())
+print(product_a.operation2())
+print(product_b.operation2())
