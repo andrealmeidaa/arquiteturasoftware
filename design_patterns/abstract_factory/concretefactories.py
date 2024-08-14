@@ -51,7 +51,7 @@ class BoletoPaymentSerializer(PaymentSerializer):
     def validate_payment(self, payment_data):
         # Implement payment data validation logic here
         print("Validating boleto payment data...")
-
+#Criandoa fábrica concreta para boleto
 class BoletoPaymentFactory(PaymentFactory):
     def create_payment_processor(self):
         return BoletoPaymentProcessor()
