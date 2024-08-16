@@ -91,3 +91,4 @@ evento_principal_online_1.registrar_participante_principal("Natália")
 evento_principal_online_1.registrar_participante_principal("Gabriela")
 evento_complementar_online.print_evento_complementar("Workshop Online A")
 evento_complementar_online.registrar_participante_complementar("Suzana")
+
