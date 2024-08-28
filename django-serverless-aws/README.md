@@ -1,4 +1,4 @@
-# Django Rest Framework - Servless
+# Django Rest Framework - Serverless
 
 O objetivo deste tutorial é apresentar um passo-a-passo para implantação de uma infraestrutura de backend, com Django Rest Framework, em uma arquitetura parcialmente baseada em microserviços, com o emprego de computação serverless e banco de dados gerenciado em nuvem. Neste tutorial utilizaremos AWS como plataforma de nuvem, através da experimentação no AWS Academy.
 
