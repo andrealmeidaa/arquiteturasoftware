@@ -1,6 +1,7 @@
 from django.dispatch import Signal
 
 # This signal is sent at the time an order is placed
+# https://docs.djangoproject.com/en/5.1/topics/signals/
 order_placed = Signal(providing_args=['order'])
 
 from django.db import models
@@ -25,6 +26,8 @@ def update_inventory(sender, order, **kwargs):
     # Logic to update inventory based on the order
     print(f"Inventory updated for order {order.pk}.")
 
+
+#Outro ponto de notificação
 from django.core.mail import send_mail
 from django.dispatch import receiver
 from .signals import order_placed
