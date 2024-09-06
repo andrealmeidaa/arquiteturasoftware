@@ -4,6 +4,8 @@ class Notification:
             print(f"Enviando email: {message}")
         elif channel == 'sms':
             print(f"Enviando SMS: {message}")
+        elif channel=='telegram':
+            print(f"Enviando Telegram: {message}")
         else:
             raise ValueError("Unknown channel")
 

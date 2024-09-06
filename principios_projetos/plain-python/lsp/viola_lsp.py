@@ -13,5 +13,5 @@ class Freelancer(Empregado):
         self.horas_trabalhadas= horas_trabalhadas
 
     def get_salario(self):
-        raise Exception("Freelancers não têm salário fixo")
+        return self.valor_hora*self.horas_trabalhadas
 
