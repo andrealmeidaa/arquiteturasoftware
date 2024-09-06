@@ -13,6 +13,10 @@ class CSVExporter:
     def export(self, report):
         print(f"Exportando {report.generate_report()} para CSV")
 
+class JSONExporter:
+    def export(self, report):
+        print(f"Exportando {report.generate_report()} para JSON")
+
 if __name__=="__main__":
     report=Report("Dados Ok")
     print(report.generate_report())
@@ -20,3 +24,5 @@ if __name__=="__main__":
     pdfExporter.export(report=report)
     csvExporter=CSVExporter()
     csvExporter.export(report=report)
+    jsonExporter=JSONExporter()
+    jsonExporter.export(report=report)

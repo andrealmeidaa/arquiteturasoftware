@@ -10,6 +10,10 @@ class SMSNotification(NotificationChannel):
     def send(self, message):
         print(f"Enviando SMS: {message}")
 
+class TelegramNotification(NotificationChannel):
+    def send(self,message):
+        print(f"Enviando Telegram: {message}")
+
 class Notification:
     def __init__(self, channel: NotificationChannel):
         self.channel = channel
@@ -18,7 +22,5 @@ class Notification:
         self.channel.send(message)
 
 if __name__=='__main__':
-    notificadorEmail=Notification(EmailNotification())
-    notificadorEmail.send(message='Uma mensagem')
-    notificadorSMS=Notification(SMSNotification())
-    notificadorSMS.send(message='Nova mensagem')
+    notificador=Notification(TelegramNotification())
+    notificador.send('Teste')
