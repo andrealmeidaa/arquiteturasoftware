@@ -14,7 +14,7 @@ class TarefaRepositoryInterface:
     def salvar(self, tarefa: Tarefa) -> Tarefa:
         raise NotImplementedError
 
-    def remover(self, id: str) -> None:
+    def remover(self, id: str) -> bool:
         raise NotImplementedError
 
 class TarefaUseCase:
