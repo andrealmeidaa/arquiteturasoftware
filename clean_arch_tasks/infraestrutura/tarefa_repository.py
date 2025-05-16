@@ -23,5 +23,7 @@ class InMemoryTarefaRepository(TarefaRepositoryInterface):
         self.tarefas.append(tarefa)
         return tarefa
 
-    def remover(self, id: str) -> None:
+    def remover(self, id: str) -> bool:
+        total=self.tarefas.count()
         self.tarefas = [tarefa for tarefa in self.tarefas if tarefa.id != id]
+        return total!=self.tarefas.count()
